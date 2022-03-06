@@ -1,4 +1,4 @@
-# Assigment in [IS-211-1 Algorithms and Data Structures](https://www.uia.no/en/studieplaner/topic/IS-211-1)
+# Assigment 2 [IS-211-1 Algorithms and Data Structures](https://www.uia.no/en/studieplaner/topic/IS-211-1)
 
 # TASK : Discrete event simulation
 

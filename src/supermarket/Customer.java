@@ -34,7 +34,7 @@ public class Customer {
     public Customer(SuperMarket shop, int time) {
         this.shop = shop;
         name = this.getClass().getSimpleName() + "_" + time;
-        beginShoppingTime = EventSim.nextInt(0,50);
+        beginShoppingTime = EventSim.nextInt(0, 50);
         numProducts = EventSim.nextInt(MIN_PRODUCTS, MAX_PRODUCTS);
         shoppingDuration = EventSim.nextInt(MIN_SHOP_TIME, MAX_SHOP_TIME);
         endShoppingTime = beginShoppingTime + shoppingDuration;
@@ -47,7 +47,8 @@ public class Customer {
         return name;
     }
 
-    public void joinShortestCheckout(){
+    public void joinShortestCheckout() {
         this.checkout = shop.addCustomerToShortestQueue();
     }
+}
 

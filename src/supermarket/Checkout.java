@@ -43,9 +43,7 @@ public class Checkout {
     public double customerAverageQueueTime(){
         return totalQueueWaitTime / SuperMarket.NUM_CUSTOMERS;
     }
-    public double checkoutAverageQueueSize(){
-        return totalQueueSize / lastCustomerLeaveTime;
-    }
+
 
     public int getLastCustomerLeaveTime() {
         if (customerQueue.peekLast() == null) {

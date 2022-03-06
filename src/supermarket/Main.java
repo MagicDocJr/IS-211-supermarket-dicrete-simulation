@@ -7,8 +7,8 @@ public class Main {
         System.out.println("\nStatistics: ");
         for(Checkout checkout : superMarket.checkouts){
             System.out.println(checkout + ": ");
-            System.out.println("Customers spent on average " + checkout.customerAverageQueueTime() + " time units waiting in queue");
-            System.out.println("The average queue size at " + " was " + checkout.checkoutAverageQueueSize() + " customers \n");
+            System.out.println("Customers spent on average " + checkout.customerAverageQueueTime() + " time units waiting in queue\n");
+
         }
     }
 

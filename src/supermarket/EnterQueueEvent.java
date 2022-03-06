@@ -12,18 +12,21 @@ public class EnterQueueEvent extends Event {
         this.customer = customer;
         this.customer.joinShortestCheckout();
         this.checkout = customer.checkout;
+        customer.checkoutDuration = checkout.checkoutDuration(customer.numProducts);
+        customer.checkoutTime = checkout.getQueueWaitTime(customer) + 1 +  customer.endShoppingTime;
+        customer.leaveTime = customer.checkoutTime + customer.checkoutDuration;
+        customer.queueWaitDuration = checkout.getQueueWaitTime(customer);
+        checkout.totalQueueSize++;
+        checkout.totalQueueWaitTime += customer.queueWaitDuration;
+        checkout.setMaxQueueWaitDuration(customer.queueWaitDuration);
+        checkout.customerQueue.add(customer);
+        checkout.setLongestQueueSize();
 
     }
 
     @Override
     public Event happen() {
-        customer.checkoutDuration = checkout.checkoutDuration(customer.numProducts);
-        customer.checkoutTime = checkout.getQueueWaitTime(customer) + 1 +  customer.endShoppingTime;
-        customer.leaveTime = customer.checkoutTime + customer.checkoutDuration;
-        customer.queueWaitDuration = checkout.getQueueWaitTime(customer);
-        checkout.totalQueueSize += checkout.customerQueue.size();
-        checkout.totalQueueWaitTime += customer.queueWaitDuration;
-        checkout.customerQueue.add(customer);
+
         return new BeginCheckoutEvent(customer, checkout);
     }
 

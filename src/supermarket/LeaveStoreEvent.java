@@ -15,7 +15,7 @@ public class LeaveStoreEvent extends Event {
     @Override
     public Event happen() {
         checkout.lastCustomerLeaveTime = customer.leaveTime;
-        checkout.customerQueue.remove(customer);
+        customer.checkout.customerQueue.remove(customer);
         return null;
     }
 

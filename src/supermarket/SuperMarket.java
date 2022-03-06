@@ -12,8 +12,8 @@ import java.util.List;
  */
 public class SuperMarket {
 
-    public static final int NUM_CHECKOUTS = 2;
-    public static final int NUM_CUSTOMERS = 10;
+    public static final int NUM_CHECKOUTS = 3;
+    public static final int NUM_CUSTOMERS = 50;
     Checkout[] checkouts;
     List<Customer> customers;
     List<Event> eventList;
@@ -27,6 +27,7 @@ public class SuperMarket {
         customers = new ArrayList<>();
         eventList = new ArrayList<>();
 
+
         for (int i = 0; i < NUM_CUSTOMERS; i++) {
             Customer customer = new Customer(this, i);
             eventList.add(new BeginShoppingEvent(customer));
@@ -35,13 +36,13 @@ public class SuperMarket {
     }
 
     public Checkout addCustomerToShortestQueue(){
-        Checkout shortestqueue = checkouts[0];
+        Checkout shortestQueue = checkouts[0];
         for(Checkout checkout : checkouts){
-            if(checkout.getLastCustomerLeaveTime() < shortestqueue.getLastCustomerLeaveTime()){
-                shortestqueue = checkout;
+            if(checkout.getLastCustomerLeaveTime() < shortestQueue.getLastCustomerLeaveTime()){
+                shortestQueue = checkout;
                 }
         }
-        return shortestqueue;
+        return shortestQueue;
     }
 
 

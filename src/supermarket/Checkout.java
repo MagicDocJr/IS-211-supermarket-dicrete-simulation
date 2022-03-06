@@ -15,6 +15,8 @@ public class Checkout {
     int lastCustomerLeaveTime;
     double totalQueueWaitTime;
     double totalQueueSize;
+    int maxQueueSize;
+    int maxQueueWaitDuration;
     SuperMarket shop;
     String name;
 
@@ -41,9 +43,28 @@ public class Checkout {
     }
 
     public double customerAverageQueueTime(){
-        return totalQueueWaitTime / SuperMarket.NUM_CUSTOMERS;
+        return totalQueueWaitTime / totalQueueSize;
     }
 
+    public int getLongestQueueSize(){
+        return maxQueueSize;
+    }
+
+    public void setLongestQueueSize() {
+        if (this.maxQueueSize < customerQueue.size()) {
+            this.maxQueueSize = customerQueue.size();
+        }
+    }
+
+    public void setMaxQueueWaitDuration(int waitDuration){
+        if (this.maxQueueWaitDuration < waitDuration){
+            this.maxQueueWaitDuration = waitDuration;
+        }
+    }
+
+    public int getMaxQueueWaitDuration(){
+        return maxQueueWaitDuration;
+    }
 
     public int getLastCustomerLeaveTime() {
         if (customerQueue.peekLast() == null) {
@@ -57,8 +78,6 @@ public class Checkout {
         return name;
     }
 
-    public void addToQueue(Customer customer){
-        customerQueue.add(customer);
-    }
+
 
 }
